@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="description" content="Pomodoro clock">
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/main.css"> 
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
+        <base target="_blank">
+    </head>
+    <body>
+        <div id="clock">
+            <div class="logo">pomodoro clock</div>
+            <div class="input">
+                <div class="session"></div><!--
+                --><div class="short-break"></div><!--
+                --><div class="long-break"></div>
+            </div>
+            <div class="display"></div>
+            <div class="buttons"></div>
+        </div>
+        <audio loop>
+            <source src="audio/1.wav">
+            <source src="audio/1.mp3">
+        </audio>
+        <script src="./src/interface.js"></script>
+        <script src="./src/index.js"></script>
+    </body>
+</html>

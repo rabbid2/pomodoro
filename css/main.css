@@ -1,0 +1,183 @@
+body{
+  background: linear-gradient(to right, #ffddd6 20%, #ededdc 20%, #ededdc 80%, #DBDBDB 80%);
+}
+
+#clock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 500px;
+  position: relative;
+  background-color: #588d60;
+  margin: 15vh auto;
+  border-radius: 50%;
+  color:#ededdc;
+  font-family: 'Quicksand', sans-serif;
+  letter-spacing: 0.7px;
+}
+
+.logo {
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 30px;
+  letter-spacing: 0.1em;
+}
+
+.input {
+  margin-bottom: 10px;
+  position: relative;
+  width: 500px;
+  height: 126px;
+}
+
+.session, .long-break, .short-break {
+  width: 80px;
+  height: 126px;
+  overflow: hidden;
+  display: inline-block;
+  margin-left: 65px;
+}
+
+.long-break {
+  margin-right: 65px;
+}
+
+.number {
+  width: 80px;
+  height: 38px;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.selected-value {
+  height: 50px;
+  padding: 9px;
+  font-size: 26px;
+  background-color:#ff886e;
+  border-radius: 50px;
+  color:#fe2200;
+}
+
+button {
+  height: 30px;
+  width: 100px;
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  color:#ededdc;
+  font-size: 16px;
+}
+
+.name-time-input {
+  height: 126px;
+  position: absolute;
+  top: 0px;
+  left: 45px;
+  text-align: center;
+  writing-mode: vertical-rl;
+  -webkit-writing-mode: vertical-rl;
+  -ms-writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  user-select: none;
+}
+
+.short-break .name-time-input {
+  left: 190px;
+}
+
+.long-break .name-time-input {
+  left: 335px;
+}
+
+.up-arrow, .down-arrow {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  right: 43px;
+  top: 40px;
+  background-color:#ff886e;
+  padding: 0;
+  border: 0;
+  border-radius: 50px;
+}
+
+.down-arrow {
+  top:66px;
+}
+
+.session .up-arrow, .session .down-arrow {
+  right: 333px;
+}
+
+.short-break .up-arrow, .short-break .down-arrow {
+  right: 188px;
+}
+
+.display {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.time {
+  width: 300px;
+  height: 100px;
+  background-color:#ff886e;
+  color:#fe2200;
+  padding: 27px;
+  font-size: 30px;
+  text-align: center;
+  border-radius: 50px;
+}
+
+.message {
+  width: 250px;
+  font-size: 11px;
+  color:#ededdc;
+  position: absolute;
+  bottom: 5px;
+  left: 22.5px;
+  text-align: center;
+}
+
+.prev-point, .current-point, .next-point {
+  width: 69px;
+  display: inline-block;
+  user-select: none;
+}
+
+.current-point {
+  width: 100px;
+  font-size: 16px;
+  color:#fe2200;
+}
+
+.buttons {
+  width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.stop, .pause, .start {
+  background-color:#ff886e;
+  border-radius: 50px;
+  height: 40px;
+  width: 40px;
+  margin-right: 20px;
+}
+
+.stop {
+  margin-right: 0;
+}
+
+button::-moz-focus-inner {   
+  border : 0px;
+}
+  
+button:focus {     
+  outline : none; 
+}
