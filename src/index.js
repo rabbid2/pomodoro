@@ -35,7 +35,7 @@ function stopClock(e) {
 
 function pauseClock(e) {
   if (sessionSeconds === -1) return;
-  togglePauseColor();
+  if (!pause) togglePauseColor();
   pause = true;
   clearInterval(timerID);
   document.querySelector(`.start`).addEventListener(`click`, startClock);
