@@ -2,6 +2,24 @@ let sessionStartTime = 30;
 let shortBreakStartTime = 5;
 let longBreakStartTime = 20;
 
+function createTimerInterface() {
+  createTimeInput(document.querySelector(`.session`), sessionStartTime);
+  createTimeInput(document.querySelector(`.long-break`), longBreakStartTime);
+  createTimeInput(document.querySelector(`.short-break`), shortBreakStartTime);
+  createElement(`div`, `.display`, ``, `time`);
+  createElement(`div`, `.display`, ``, `message`);
+  createElement(`div`, `.message`, `long break`, `prev-point`);
+  createElement(`div`, `.message`, `session`, `current-point`);
+  createElement(`div`, `.message`, `short break`, `next-point`);
+  let startButton = createElement(`button`, `.buttons`, `<img src = 'img/start.png' alt = '^'></img>`, `start`);
+  let pauseButton = createElement(`button`, `.buttons`, `<img src = 'img/pause.png' alt = '^'></img>`, `pause`);
+  let stopButton = createElement(`button`, `.buttons`, `<img src = 'img/stop.png' alt = '^'></img>`, `stop`);
+  startButton.addEventListener(`click`, startClock);
+  stopButton.addEventListener(`click`, stopClock);
+  pauseButton.addEventListener(`click`, pauseClock);
+  setTime(sessionStartTime * 60);
+}
+
 function createTimeInput(parent, startTime) {
   let minuts = startTime;
   let step = 38;
@@ -88,24 +106,6 @@ function createTimeInput(parent, startTime) {
   }
 }
 
-function createTimerInterface() {
-  createTimeInput(document.querySelector(`.session`), sessionStartTime);
-  createTimeInput(document.querySelector(`.long-break`), longBreakStartTime);
-  createTimeInput(document.querySelector(`.short-break`), shortBreakStartTime);
-  createElement(`div`, `.display`, ``, `time`);
-  createElement(`div`, `.display`, ``, `message`);
-  createElement(`div`, `.message`, `long break`, `prev-point`);
-  createElement(`div`, `.message`, `session`, `current-point`);
-  createElement(`div`, `.message`, `short break`, `next-point`);
-  let startButton = createElement(`button`, `.buttons`, `<img src = 'img/start.png' alt = '^'></img>`, `start`);
-  let pauseButton = createElement(`button`, `.buttons`, `<img src = 'img/pause.png' alt = '^'></img>`, `pause`);
-  let stopButton = createElement(`button`, `.buttons`, `<img src = 'img/stop.png' alt = '^'></img>`, `stop`);
-  startButton.addEventListener(`click`, startClock);
-  stopButton.addEventListener(`click`, stopClock);
-  pauseButton.addEventListener(`click`, pauseClock);
-  setTime(sessionStartTime * 60);
-}
-
 function createElement(tag, parentSelector, html, className) {
   let parent = document.querySelector(parentSelector);
   let element = document.createElement(tag);
@@ -113,6 +113,15 @@ function createElement(tag, parentSelector, html, className) {
   element.classList.add(className);
   parent.appendChild(element);
   return element;
+}
+
+function setTime(seconds) {
+  secondsLeft = seconds;
+  let minuts = Math.floor(seconds / 60);
+  seconds = seconds % 60;
+  let timeString = `${paddedNumber(minuts)}:${paddedNumber(seconds)}`;
+  document.querySelector(`.time`).textContent = timeString;
+  document.querySelector(`title`).textContent = timeString;
 }
 
 function setPointMessage(sequencePoint) {
@@ -133,22 +142,19 @@ function setPointMessage(sequencePoint) {
       item2.textContent = item3.textContent;
       item3.textContent = nextPoint;
     }
-    toggleColor(item2);
-    toggleColor(document.querySelector(`.time`));
-}
-
-function setTime(seconds) {
-  secondsLeft = seconds;
-  let minuts = Math.floor(seconds / 60);
-  seconds = seconds % 60;
-  let timeString = `${paddedNumber(minuts)}:${paddedNumber(seconds)}`;
-  document.querySelector(`.time`).textContent = timeString;
-  document.querySelector(`title`).textContent = timeString;
+    togglePeriodColor(item2);
+    togglePeriodColor(document.querySelector(`.time`));
 }
 
 function paddedNumber(number) {
   if (number < 10) return `0${number}`;
   else return number.toString();
+}
+
+function getInput(){
+  sessionSeconds = getMinuts(`.session`) * 60;
+  shortBreakSeconds = getMinuts(`.short-break`) * 60;
+  longBreakSeconds = getMinuts(`.long-break`) * 60;
 }
 
 function getMinuts(parent) {
@@ -167,14 +173,13 @@ function stopSound() {
   audio.pause();
 }
 
-function showNotification() {
-  playSound();
-  if (sequencePoint % 2 === 0) alert(`Go session`);
-  else alert(`Go break`);
-  stopSound();
-}
-
-function toggleColor(element) {
+function togglePeriodColor(element) {
   if (sequencePoint % 2 === 0) element.style.color = `#fe2200`;
   else element.style.color = `#193e26`;
+}
+
+function togglePauseColor(){
+  let pauseEl = document.querySelector(`.pause`);
+  if (pause) pauseEl.style.backgroundColor = `#ff886e`;
+  else pauseEl.style.backgroundColor = `#fe2200`;
 }
