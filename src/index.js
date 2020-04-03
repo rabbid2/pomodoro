@@ -25,7 +25,7 @@ function startClock(e) {
 function stopClock(e) {
   sequencePoint = 0;
   clearInterval(timerID);
-  setTime(getMinuts(`.session`));
+  setTime(getMinuts(`.session`) * 60);
   setPointMessage(0);
   pause = true;
   togglePauseColor();
