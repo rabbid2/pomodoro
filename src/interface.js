@@ -1,4 +1,4 @@
-let sessionStartTime = 30;
+let sessionStartTime = 25;
 let shortBreakStartTime = 5;
 let longBreakStartTime = 20;
 
